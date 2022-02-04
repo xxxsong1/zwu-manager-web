@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>验收点资料列表</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
+<nav class="navbar navbar-default" style="margin-bottom: 0">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" href="#">浙江万里学院 项目资源管理平台</a>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="index.html">首页 <span class="sr-only">(current)</span></a></li>
+                <li><a href="prolist.html">项目管理</a></li>
+                <li><a href="keymanage.html">验收要点管理</a></li>
+                <li><a href="#">经费管理</a></li>
+                <li><a href="#">结项管理</a></li>
+                <li><a href="checkchart.html">统计分析</a></li>
+            </ul>
+            
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+               <li type="button" data-toggle="modal" data-target="#myModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>修改密码</a></li>
+                <li><a href="index.html"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>退出登录</a></li>
+            </ul>
+            
+         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+           <div class="modal-dialog" role="document">
+              <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+                </div>
+                
+             <div class="modal-body">
+                <form class="form-horizontal">
+                 <div class="form-group">
+                  <label for="inputPassword1" class="col-sm-2 control-label">原始密码</label>
+                    <div class="col-sm-10">
+                     <input type="password" class="form-control" id="inputPassword1" placeholder="请输入原密码">
+                   </div>
+                 </div>
+            <div class="form-group">
+              <label for="inputPassword2" class="col-sm-2 control-label">新密码</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword2" placeholder="请输入新密码">
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">确认密码</label>
+               <div class="col-sm-10">
+                 <input type="password" class="form-control" id="inputPassword3" placeholder="请再输入新密码">
+               </div>
+            </div>
+               </form>
+                  </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>确定修改</button>
+                </div>
+                  </div>
+                 </div>
+                </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section>
+    <div class="banner">
+        <div class="bannermsg container">
+            <span id="welcome"></span>
+            &nbsp; &nbsp;
+            <span class="notice"></span>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container bc">
+        <ol class="breadcrumb">
+            <li><a href="index.html">首页</a></li>
+            <li class="active">验收要点管理</li>
+        </ol>
+    </div>
+    <div class="container maincontainer">
+        <div class="row">     
+           <ul class="list-group col-sm-12">
+           	 <li class="list-group-item col-sm-12" style="background-color: #EDEDED;">
+             <div class="col-md-8">    
+           <div class="col-md-4">               
+           <div class="glyphicon glyphicon-th-list" style="text-align: left;"></div>二级    
+							<select id="level" class="btn btn-default dropdown-toggle"   aria-haspopup="true" aria-expanded="true" style="width: 70%;margin-left: 10px; text-align: left;">				    
+								<option value="-1">全部级别</option>
+							</select>	     
+					</div>
+           <div class="col-md-4">
+            <div class="glyphicon glyphicon-th-list" style="text-align: left;"></div>二级    
+           		<select id="level1" class="btn btn-default dropdown-toggle"   aria-haspopup="true" aria-expanded="true" style="width: 70%;margin-left: 10px; text-align: left;">				    
+           			<option value="-1">全部级别</option>
+           		</select>	     
+           </div>						
+      </div>
+             
+       <div class="col-md-4">
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1"><div class="glyphicon glyphicon-glass"></div>关键词</span>
+				  <input type="text" class="form-control" aria-describedby="basic-addon1" placeholder="请输入关键词" style="width: 50%;">
+				  <button class="btn btn-primary" type="submit" style="margin-left: 10px;">搜索</button>
+				</div>
+             </div>
+                             
+             </li>
+           </ul>
+          </div>
+        
+        
+         <div class="row">
+    	<div class="col-md-4">
+    		<h4>
+    			<div class="glyphicon glyphicon-file">资料名称</div>
+    		</h4>
+    	</div>
+    	    	<div class="col-md-3">
+    		<h4>
+    			<div class="glyphicon glyphicon-open-file">文件名称</div>
+    		</h4>
+    	</div>
+    	    	<div class="col-md-5">
+    		<h4>
+    			<div class="glyphicon glyphicon-wrench">操作</div>
+    		</h4>
+    	</div>
+    </div>
+    <table  id="MyTB"  class="table table-hover table-striped table-condensed">
+    	<tr class="active">
+    		<td class="col-md-7">
+    			<div class="col-md-7">
+    			<a href="resdetail.html" style="margin-top: 3px;">验收要点1</a>	
+    			</div>
+    			<div class="col-md-5">
+    			<p style="font-size: 12px;margin-top: 3px;">2013</p>	
+    			</div>  			
+    		</td>
+				<td class="col-md-5">
+				<button class="btn btn-default" type="submit"><div class="glyphicon glyphicon-wrench"></div>修改</button>
+				<button class="btn btn-default" type="submit" onclick="up(this)" ><div class="glyphicon glyphicon-arrow-up"></div>上移</button>
+				<button class="btn btn-default" type="submit" onclick="down(this)" ><div class="glyphicon glyphicon-arrow-down"></div>下移</button>
+				<button class="btn btn-danger" type="submit" onclick="del(this)"><div class="glyphicon glyphicon-remove"></div>删除</button>
+				</td>
+    	</tr>
+    	<tr>
+    		<td class="col-md-7">
+    			<div class="col-md-7">
+    			<a href="resdetail.html" style="margin-top: 3px;">验收要点2</a>	
+    			</div>
+    			<div class="col-md-5">
+    			<p style="font-size: 12px;margin-top: 3px;">2013</p>	
+    			</div> 			
+    		</td>
+				<td class="col-md-5">
+				<button class="btn btn-default" type="submit"><div class="glyphicon glyphicon-wrench"></div>修改</button>
+				<button class="btn btn-default" type="submit" onclick="up(this)" ><div class="glyphicon glyphicon-arrow-up"></div>上移</button>
+				<button class="btn btn-default" type="submit" onclick="down(this)" ><div class="glyphicon glyphicon-arrow-down"></div>下移</button>
+				<button class="btn btn-danger" type="submit" onclick="del(this)"><div class="glyphicon glyphicon-remove"></div>删除</button>
+				</td>
+    	</tr>
+     	<tr class="active">
+    		<td class="col-md-7">
+    			<div class="col-md-7">
+    			<a href="resdetail.html" style="margin-top: 3px;">验收要点3</a>	
+    			</div>
+    			<div class="col-md-5">
+    			<p style="font-size: 12px;margin-top: 3px;">2013</p>	
+    			</div>			
+    		</td>
+				<td class="col-md-5">
+				<button class="btn btn-default" type="submit"><div class="glyphicon glyphicon-wrench"></div>修改</button>
+				<button class="btn btn-default" type="submit" onclick="up(this)" ><div class="glyphicon glyphicon-arrow-up"></div>上移</button>
+				<button class="btn btn-default" type="submit" onclick="down(this)" ><div class="glyphicon glyphicon-arrow-down"></div>下移</button>
+				<button class="btn btn-danger" type="submit" onclick="del(this)"><div class="glyphicon glyphicon-remove"></div>删除</button>
+				</td>
+    	</tr>
+    	<tr>
+    		<td class="col-md-7">
+    			<div class="col-md-7">
+    			<a href="resdetail.html" style="margin-top: 3px;">验收要点4</a>	
+    			</div>
+    			<div class="col-md-5">
+    			<p style="font-size: 12px;margin-top: 3px;">2013</p>	
+    			</div>		
+    		</td>
+				<td class="col-md-5">
+				<button class="btn btn-default" type="submit"><div class="glyphicon glyphicon-wrench"></div>修改</button>
+				<button class="btn btn-default" type="submit" onclick="up(this)" ><div class="glyphicon glyphicon-arrow-up"></div>上移</button>
+				<button class="btn btn-default" type="submit" onclick="down(this)" ><div class="glyphicon glyphicon-arrow-down"></div>下移</button>
+				<button class="btn btn-danger" type="submit" onclick="del(this)"><div class="glyphicon glyphicon-remove"></div>删除</button>
+				</td>
+    	</tr>  
+    	<tr class="active">
+    		<td class="col-md-7">
+    			<div class="col-md-7">
+    			<a href="resdetail.html" style="margin-top: 3px;">验收要点5</a>	
+    			</div>
+    			<div class="col-md-5">
+    			<p style="font-size: 12px;margin-top: 3px;">2013</p>	
+    			</div>			
+    		</td>
+				<td class="col-md-5">
+				<button class="btn btn-default" type="submit"><div class="glyphicon glyphicon-wrench"></div>修改</button>
+				<button class="btn btn-default" type="submit" onclick="up(this)" ><div class="glyphicon glyphicon-arrow-up"></div>上移</button>
+				<button class="btn btn-default" type="submit" onclick="down(this)" ><div class="glyphicon glyphicon-arrow-down"></div>下移</button>
+				<button class="btn btn-danger" type="submit" onclick="del(this)"><div class="glyphicon glyphicon-remove"></div>删除</button>
+				</td>
+    	</tr>  
+    	<tr class="active">
+    		<td class="col-md-7">
+    			<div class="col-md-7">
+    			<a href="resdetail.html" style="margin-top: 3px;">验收要点6</a>	
+    			</div>
+    			<div class="col-md-5">
+    			<p style="font-size: 12px;margin-top: 3px;">2013</p>	
+    			</div>
+    		</td>
+				<td class="col-md-5">
+				<button class="btn btn-default" type="submit"><div class="glyphicon glyphicon-wrench"></div>修改</button>
+				<button class="btn btn-default" type="submit" onclick="up(this)" ><div class="glyphicon glyphicon-arrow-up"></div>上移</button>
+				<button class="btn btn-default" type="submit" onclick="down(this)" ><div class="glyphicon glyphicon-arrow-down"></div>下移</button>
+				<button class="btn btn-danger" type="submit" onclick="del(this)"><div class="glyphicon glyphicon-remove"></div>删除</button>
+				</td>
+    	</tr> 
+    	 <tr class="active">
+    		<td class="col-md-7">
+    			<div class="col-md-7">
+    			<a href="resdetail.html" style="margin-top: 3px;">验收要点7</a>	
+    			</div>
+    			<div class="col-md-5">
+    			<p style="font-size: 12px;margin-top: 3px;">2013</p>	
+    			</div>
+    		</td>
+				<td class="col-md-5">
+				<button class="btn btn-default" type="submit"><div class="glyphicon glyphicon-wrench"></div>修改</button>
+				<button class="btn btn-default" type="submit" onclick="up(this)" ><div class="glyphicon glyphicon-arrow-up"></div>上移</button>
+				<button class="btn btn-default" type="submit" onclick="down(this)" ><div class="glyphicon glyphicon-arrow-down"></div>下移</button>
+				<button class="btn btn-danger" type="submit" onclick="del(this)"><div class="glyphicon glyphicon-remove"></div>删除</button>
+				</td>
+    	</tr> 
+    </table>
+
+  
+		 <div class="row">
+		 	<div class="col-sm-7">
+			<nav aria-label="..." style="float: right;">
+			  <ul class="pagination">
+			    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+			    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+				 <li><a href="#">2</a></li>
+				    <li><a href="#">3</a></li>
+				    <li><a href="#">4</a></li>
+				    <li><a href="#">5</a></li>
+				    <li>
+				      <a href="#" aria-label="Next">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
+				  </ul>
+				</nav>
+		 </div>
+	 </div>   
+ </div>
+        
+        </div>
+  
+</section>
+<footer class="footer">
+    <div class="login-footer">
+        <ul>
+            <li><a href="#">关于我们</a></li>
+            <li><a href="#">联系方式</a></li>
+            <li><a href="#">技术支持</a></li>
+            <li><a href="#">意见反馈</a></li>
+            <li><a href="#">帮助中心</a></li>
+        </ul>
+        <p></p>
+        <p>
+            <span>版权所有 浙江万里学院</span>
+        </p>
+        <p>
+            <span>&copy: 2014 ZWU. All Rights Reserved</span>
+        </p>
+    </div>
+</footer>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var myDate =new Date();
+        var hour =myDate.getHours();
+        var str = "";
+        if(hour>=8&&hour<=11){
+            str += "上午好，喝杯咖啡，好好工作！";
+            $(".banner").css("background-image","url(images/banners/noon.jpg)")
+        }else if(hour>=12&&hour<=17){
+            str+= "下午好，享受午后时光，加油干！";
+            $(".banner").css("background-image","url(images/banners/afternoon.jpg)")
+        }else if(hour>=18&&hour<=23){
+            str+="晚上好！";
+            $(".banner").css("background-image","url(images/banners/evening.jpg)")
+        }
+        var span=document.getElementById("welcome");
+        span.innerHTML= str;
+    });
+		//删除
+		function del(t){
+		  $(t).parent().parent().remove();
+		}		    
+		//上移
+		function up(t){
+		 var i=$(t).parent().parent().index();//当前行的id
+		   var tem0=$(t).parent().parent().html();
+		   var tem1=$(t).parent().parent().prev().html();
+		   $(t).parent().parent().prev().html(tem0);
+		   $(t).parent().parent().html(tem1);		 
+		}
+		//下移
+		function down(t){
+		 var l=$("#MyTB tr").length;//总行数
+		 console.log(l);
+		 var i=$(t).parent().parent().index();//当前行的id
+		 if(i<l-1){//不是最后一行，则可以下移
+		   var tem0=$(t).parent().parent().html();
+		   var tem1=$(t).parent().parent().next().html();
+		   $(t).parent().parent().next().html(tem0);
+		   $(t).parent().parent().html(tem1);
+		 }
+		};   
+		var levelArr=['一级','二级','三级'];
+		function createOption(obj,data){
+			for(var i in data){
+				var op=new Option(data[i],i);
+				obj.options.add(op);
+			}
+		}
+		var level=document.getElementById('level');
+		createOption(level,levelArr);
+		var level1=document.getElementById('level1');
+		createOption(level1,levelArr);
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</body>
+</html>

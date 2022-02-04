@@ -1,0 +1,16 @@
+{
+	"total":[
+		{"label": "已完成", "data": 80}, 
+		{"label": "未完成", "data": 60}
+	],
+	"items":[
+		[{"label": "已完成", "data": 20},{"label": "未完成", "data": 70}],
+		[{"label": "已完成", "data": 70},{"label": "已完成", "data": 80}],
+		[{"label": "已完成", "data": 70},{"label": "已完成", "data": 70}],
+		[{"label": "已完成", "data": 50},{"label": "已完成", "data": 70}],
+		[{"label": "已完成", "data": 70},{"label": "已完成", "data": 70}],
+		[{"label": "已完成", "data": 30},{"label": "已完成", "data": 70}],
+		[{"label": "已完成", "data": 70},{"label": "已完成", "data": 66}]
+	]
+	
+}
